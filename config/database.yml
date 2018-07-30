@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  username: postgres
+  database: sitemapper_development
+
+
+test:
+  <<: *default
+  database: sitemapper_test
+
+production:
+  <<: *default
+  database: sitemapper_production
+  username: industrial_park
+  password: <%= ENV['INDUSTRIAL_PARK_DATABASE_PASSWORD'] %>
